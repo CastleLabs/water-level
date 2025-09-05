@@ -55,6 +55,49 @@
             </form>
         </div>
 
+        <!-- Slack Notifications Card -->
+        <div class="card">
+            <h2>Slack Notifications</h2>
+            <form id="slack-form">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="slack_enabled"> Enable Slack Notifications
+                    </label>
+                    <small>Send leak alerts and system notifications to Slack</small>
+                </div>
+
+                <div id="slack-settings" style="display:none;">
+                    <div class="form-group">
+                        <label for="slack_bot_token">Bot Token</label>
+                        <input type="password" id="slack_bot_token" placeholder="xoxb-your-bot-token-here" autocomplete="off">
+                        <small>Slack Bot User OAuth Token (starts with xoxb-)</small>
+                        <button type="button" onclick="toggleTokenVisibility()" class="btn-small" style="margin-top: 5px;">Show/Hide</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slack_channel">Channel</label>
+                        <input type="text" id="slack_channel" placeholder="#water-alerts" value="#water-alerts">
+                        <small>Slack channel to receive notifications (include #)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slack_mentions">Mentions</label>
+                        <input type="text" id="slack_mentions" placeholder="@channel, @username" value="@channel">
+                        <small>Users/groups to mention in urgent alerts (comma-separated)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="testSlack()" class="btn">Test Slack Connection</button>
+                        <div id="slack-test-result" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Slack Settings</button>
+                </div>
+            </form>
+        </div>
+
         <div class="card">
             <h2>Calibration Values</h2>
             <div class="calibration-info">
@@ -86,17 +129,42 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadSettings();
             loadStatus();
+            
+            // Show/hide Slack settings based on checkbox
+            document.getElementById('slack_enabled').addEventListener('change', function() {
+                const slackSettings = document.getElementById('slack-settings');
+                slackSettings.style.display = this.checked ? 'block' : 'none';
+            });
         });
 
         function loadSettings() {
             fetch('/api/settings')
                 .then(response => response.json())
                 .then(data => {
+                    // Main settings
                     document.getElementById('sample_interval').value = data.sample_interval || 60;
                     document.getElementById('leak_threshold').value = data.leak_threshold || 5;
                     document.getElementById('consecutive_readings').value = data.consecutive_readings_for_alert || 3;
                     document.getElementById('alert_cooldown').value = data.alert_cooldown || 3600;
                     
+                    // Slack settings
+                    const slackConfig = data.slack || {};
+                    document.getElementById('slack_enabled').checked = slackConfig.enabled || false;
+                    document.getElementById('slack_bot_token').value = slackConfig.bot_token || '';
+                    document.getElementById('slack_channel').value = slackConfig.channel || '#water-alerts';
+                    
+                    // Handle mention_users array
+                    if (slackConfig.mention_users && Array.isArray(slackConfig.mention_users)) {
+                        document.getElementById('slack_mentions').value = slackConfig.mention_users.join(', ');
+                    } else {
+                        document.getElementById('slack_mentions').value = '@channel';
+                    }
+                    
+                    // Show/hide Slack settings
+                    const slackSettings = document.getElementById('slack-settings');
+                    slackSettings.style.display = slackConfig.enabled ? 'block' : 'none';
+                    
+                    // Calibration values
                     if (data.reference_sensor) {
                         document.getElementById('ref-empty').textContent = data.reference_sensor.calibration_empty;
                         document.getElementById('ref-full').textContent = data.reference_sensor.calibration_full;
@@ -114,8 +182,12 @@
                 .then(response => response.json())
                 .then(data => {
                     const statusDiv = document.getElementById('system-status');
+                    const slackStatus = data.slack_enabled ? '✅ Enabled' : '❌ Disabled';
+                    
                     statusDiv.innerHTML = `
-                        <p><strong>Monitoring:</strong> ${data.running ? 'Running' : 'Stopped'}</p>
+                        <p><strong>Monitoring:</strong> ${data.running ? '✅ Running' : '❌ Stopped'}</p>
+                        <p><strong>Sensors:</strong> ${data.sensors_initialized ? '✅ Connected' : '❌ Failed'}</p>
+                        <p><strong>Slack:</strong> ${slackStatus}</p>
                         <p><strong>Active Alerts:</strong> ${data.active_alerts || 0}</p>
                         <p><strong>Database Readings:</strong> ${data.statistics?.reading_count || 0}</p>
                         <p><strong>Latest Reading:</strong> ${data.latest_reading ? new Date(data.latest_reading.timestamp).toLocaleString() : 'None'}</p>
@@ -134,6 +206,42 @@
                 });
         }
 
+        function toggleTokenVisibility() {
+            const tokenInput = document.getElementById('slack_bot_token');
+            tokenInput.type = tokenInput.type === 'password' ? 'text' : 'password';
+        }
+
+        function testSlack() {
+            const resultDiv = document.getElementById('slack-test-result');
+            resultDiv.innerHTML = 'Testing Slack connection...';
+            resultDiv.style.color = '#82aaff';
+            
+            fetch('/api/test-slack', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resultDiv.innerHTML = '✅ Slack test message sent successfully!';
+                    resultDiv.style.color = '#48c774';
+                } else {
+                    resultDiv.innerHTML = `❌ Slack test failed: ${data.error || 'Unknown error'}`;
+                    resultDiv.style.color = '#ff6b6b';
+                }
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `❌ Error testing Slack: ${error.message}`;
+                resultDiv.style.color = '#ff6b6b';
+            });
+            
+            // Clear message after 10 seconds
+            setTimeout(() => {
+                resultDiv.innerHTML = '';
+            }, 10000);
+        }
+
+        // Main settings form
         document.getElementById('settings-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const settings = {
@@ -143,6 +251,30 @@
                 alert_cooldown: parseInt(document.getElementById('alert_cooldown').value)
             };
             
+            saveSettings(settings, 'System settings saved successfully!');
+        });
+
+        // Slack settings form
+        document.getElementById('slack-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Parse mentions into array
+            const mentionsText = document.getElementById('slack_mentions').value.trim();
+            const mentionsArray = mentionsText ? mentionsText.split(',').map(m => m.trim()) : ['@channel'];
+            
+            const slackSettings = {
+                slack: {
+                    enabled: document.getElementById('slack_enabled').checked,
+                    bot_token: document.getElementById('slack_bot_token').value.trim(),
+                    channel: document.getElementById('slack_channel').value.trim(),
+                    mention_users: mentionsArray
+                }
+            };
+            
+            saveSettings(slackSettings, 'Slack settings saved successfully!');
+        });
+
+        function saveSettings(settings, successMessage) {
             fetch('/api/settings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -151,6 +283,16 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Settings saved successfully!');
+                    alert(successMessage);
                     loadStatus();
                 } else {
+                    alert('Error saving settings: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                alert('Error saving settings: ' + error.message);
+            });
+        }
+    </script>
+</body>
+</html>

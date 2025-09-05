@@ -94,7 +94,7 @@
 
         <!-- Calibration -->
         <div class="card">
-            <h2>Sensor Calibration</h2>
+            <h2>Sensor Calibration & Tare</h2>
             <div class="calibration-controls">
                 <div class="calibration-group">
                     <label>Sensor:</label>
@@ -103,10 +103,24 @@
                         <option value="control">Control</option>
                     </select>
                 </div>
-                <div class="calibration-group">
-                    <button onclick="calibrate(true)" class="btn">Calibrate Empty</button>
-                    <button onclick="calibrate(false)" class="btn">Calibrate Full</button>
+                
+                <div class="calibration-section">
+                    <h3>Calibration (Set Empty/Full Points)</h3>
+                    <div class="calibration-group">
+                        <button onclick="calibrate(true)" class="btn">Calibrate Empty</button>
+                        <button onclick="calibrate(false)" class="btn">Calibrate Full</button>
+                    </div>
+                    <small>Use when sensor is at known empty or full water levels</small>
                 </div>
+
+                <div class="calibration-section">
+                    <h3>Tare (Zero Out Current Level)</h3>
+                    <div class="calibration-group">
+                        <button onclick="tareSensor()" class="btn btn-warning">Tare Sensor</button>
+                    </div>
+                    <small>Sets current water level as new 0% baseline (like zeroing a scale)</small>
+                </div>
+                
                 <div id="calibration-result"></div>
             </div>
         </div>
@@ -135,3 +149,4 @@
     </script>
 </body>
 </html>
+
