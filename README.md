@@ -18,7 +18,7 @@ A comprehensive water leak detection system using dual eTape sensors, designed f
 
 ## Overview
 
-This water monitoring system uses two eTape water level sensors to detect leaks by comparing water levels between a main container (reference sensor) and a sealed control container (control sensor). When the difference exceeds a configurable threshold, the system triggers alerts via web dashboard and optional Slack notifications.
+This water monitoring system uses two eTape water level sensors to detect leaks by comparing water levels between a main container (reference sensor) and a control container (control sensor). When the difference exceeds a configurable threshold, the system triggers alerts via web dashboard and optional Slack notifications.
 
 ### Key Features
 
@@ -62,7 +62,7 @@ This water monitoring system uses two eTape water level sensors to detect leaks 
 ┌─────────────────┐    ┌──────────────┐    ┌─────────────────┐
 │   Reference     │    │              │    │    Control      │
 │   Container     │    │  Raspberry   │    │   Container     │
-│  (Main Tank)    │    │     Pi 5     │    │   (Sealed)      │
+│  (Main Tank)    │    │     Pi 5     │    │                 │
 │                 │    │              │    │                 │
 │  eTape Sensor ──┼────┤ ADS1115 ADC  ├────┼── eTape Sensor  │
 │                 │    │              │    │                 │
@@ -159,7 +159,7 @@ Each eTape sensor requires a voltage divider circuit:
 ### Physical Installation
 
 1. **Reference Container**: Install eTape sensor in main water container/tank
-2. **Control Container**: Install eTape sensor in sealed reference container
+2. **Control Container**: Install eTape sensor in reference container
 3. **Sensor Placement**: Ensure sensors are at same relative height
 4. **Sealing**: Use appropriate thread sealant for eTape installation
 5. **Electronics**: Place Pi and ADS1115 in waterproof enclosure
