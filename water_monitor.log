@@ -969,3 +969,255 @@ RuntimeError: Sensor initialization failed
 2025-09-05 17:43:39,774 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:43:39] "GET /settings HTTP/1.1" 200 -
 2025-09-05 17:43:39,812 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:43:39] "GET /static/style.css HTTP/1.1" 200 -
 2025-09-05 17:43:39,841 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:43:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-05 17:50:58,970 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:58] "GET / HTTP/1.1" 200 -
+2025-09-05 17:50:59,029 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "[36mGET /static/dashboard.js HTTP/1.1[0m" 304 -
+2025-09-05 17:50:59,030 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-05 17:50:59,067 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:50:59,069 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 17:50:59,070 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:50:59,073 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:50:59,074 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:50:59,074 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:50:59] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 17:51:15,460 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:15] "GET /api/history/720 HTTP/1.1" 200 -
+2025-09-05 17:51:16,209 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:16] "GET /api/history/168 HTTP/1.1" 200 -
+2025-09-05 17:51:16,721 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:16] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 17:51:29,180 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:29] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:51:29,181 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:29] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:51:59,187 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:59] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:51:59,192 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:51:59,193 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:51:59,193 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:51:59] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:52:29,187 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:52:29] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:52:29,190 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:52:29] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:52:59,193 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:52:59] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:52:59,194 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:52:59] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:52:59,196 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:52:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:52:59,197 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:52:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:53:29,102 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:53:29] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:53:29,103 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:53:29] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:53:59,143 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:53:59] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:53:59,146 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:53:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:53:59,147 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:53:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:53:59,148 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:53:59] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:54:29,108 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:54:29] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:54:29,124 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:54:29] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:54:59,106 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:54:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:54:59,107 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:54:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:55:26,135 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:55:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:55:26,136 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:55:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:55:59,107 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:55:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:55:59,107 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:55:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:56:26,106 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:56:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:56:26,109 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:56:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:56:59,101 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:56:59] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:56:59,105 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:56:59] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:57:26,155 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:57:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:57:26,156 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:57:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:58:26,112 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:58:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:58:26,114 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:58:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:58:26,115 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:58:26] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:58:26,116 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:58:26] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:59:16,432 - __main__ - INFO - Shutdown signal received
+2025-09-05 17:59:16,432 - sensor - INFO - Sensor resources cleaned up
+2025-09-05 17:59:16,432 - water_monitor - INFO - Water monitoring stopped
+2025-09-05 17:59:16,725 - __main__ - INFO - Starting Water Monitoring System
+2025-09-05 17:59:16,725 - water_monitor - INFO - Configuration loaded from config.json
+2025-09-05 17:59:16,726 - database - INFO - Database initialized at readings.db
+2025-09-05 17:59:16,726 - slack_notifier - INFO - Slack notifications enabled for channel: #water-alerts
+2025-09-05 17:59:16,729 - sensor - ERROR - Failed to initialize ADS1115: No I2C device at address: 0x48
+2025-09-05 17:59:16,729 - sensor - ERROR - Failed to initialize sensors: No I2C device at address: 0x48
+2025-09-05 17:59:16,729 - sensor - INFO - Sensor resources cleaned up
+2025-09-05 17:59:16,730 - water_monitor - ERROR - Failed to initialize sensors – continuing in degraded mode
+2025-09-05 17:59:16,850 - slack_notifier - ERROR - Slack API error: invalid_auth
+2025-09-05 17:59:16,850 - water_monitor - WARNING - Sensors not initialized – monitoring loop will not run
+2025-09-05 17:59:16,850 - __main__ - INFO - Starting web server on 0.0.0.0:5000
+2025-09-05 17:59:16,850 - __main__ - INFO - Dashboard available at http://0.0.0.0:5000
+2025-09-05 17:59:16,852 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.6.153:5000
+2025-09-05 17:59:16,853 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-05 17:59:25,736 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:25] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:59:25,744 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:25] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:59:25,760 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:25] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:59:25,760 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:25] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:59:26,799 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET / HTTP/1.1" 200 -
+2025-09-05 17:59:26,835 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /static/style.css HTTP/1.1" 200 -
+2025-09-05 17:59:26,848 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /static/dashboard.js HTTP/1.1" 200 -
+2025-09-05 17:59:26,964 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:59:26,984 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 17:59:26,985 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:59:26,986 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:59:26,988 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:59:26,989 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 17:59:26,998 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-05 17:59:29,043 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:29] "GET /settings HTTP/1.1" 200 -
+2025-09-05 17:59:29,087 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-05 17:59:29,113 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:29] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 17:59:29,117 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:29] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:59:57,704 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET / HTTP/1.1" 200 -
+2025-09-05 17:59:57,752 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "[36mGET /static/dashboard.js HTTP/1.1[0m" 304 -
+2025-09-05 17:59:57,755 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-05 17:59:57,775 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 17:59:57,784 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 17:59:57,787 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 17:59:57,796 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 17:59:57,796 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 17:59:57,808 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 17:59:57] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 18:00:28,219 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:00:28] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:00:28,223 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:00:28] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:00:58,228 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:00:58] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:00:58,229 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:00:58] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:00:58,231 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:00:58] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:00:58,232 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:00:58] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:01:28,247 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:01:28] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:01:28,249 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:01:28] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:01:58,232 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:01:58] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:01:58,235 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:01:58] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:01:58,237 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:01:58] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:01:58,238 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:01:58] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:02:28,132 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:02:28] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:02:28,137 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:02:28] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:02:58,126 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:02:58] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:02:58,128 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:02:58] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:02:58,129 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:02:58] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:02:58,129 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:02:58] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:03:28,122 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:03:28] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:03:28,126 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:03:28] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:03:58,155 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:03:58] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:03:58,158 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:03:58] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:04:26,207 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:04:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:04:26,212 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:04:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:04:58,112 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:04:58] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:04:58,112 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:04:58] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:05:26,115 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:05:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:05:26,117 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:05:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:05:58,110 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:05:58] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:05:58,113 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:05:58] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:06:26,119 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:06:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:06:26,120 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:06:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:07:26,235 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:07:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:07:26,236 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:07:26] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:07:26,238 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:07:26] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:07:26,239 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:07:26] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:08:01,331 - __main__ - INFO - Shutdown signal received
+2025-09-05 18:08:01,332 - sensor - INFO - Sensor resources cleaned up
+2025-09-05 18:08:01,453 - slack_notifier - ERROR - Slack API error: invalid_auth
+2025-09-05 18:08:01,454 - water_monitor - INFO - Water monitoring stopped
+2025-09-05 18:08:01,717 - __main__ - INFO - Starting Water Monitoring System
+2025-09-05 18:08:01,718 - water_monitor - INFO - Configuration loaded from config.json
+2025-09-05 18:08:01,718 - database - INFO - Database initialized at readings.db
+2025-09-05 18:08:01,718 - slack_notifier - INFO - Slack notifications enabled for channel: #water-alerts
+2025-09-05 18:08:01,721 - sensor - ERROR - Failed to initialize ADS1115: No I2C device at address: 0x48
+2025-09-05 18:08:01,721 - sensor - ERROR - Failed to initialize sensors: No I2C device at address: 0x48
+2025-09-05 18:08:01,722 - sensor - INFO - Sensor resources cleaned up
+2025-09-05 18:08:01,722 - water_monitor - ERROR - Failed to initialize sensors – continuing in degraded mode
+2025-09-05 18:08:01,860 - slack_notifier - ERROR - Slack API error: invalid_auth
+2025-09-05 18:08:01,860 - water_monitor - WARNING - Sensors not initialized – monitoring loop will not run
+2025-09-05 18:08:01,860 - __main__ - INFO - Starting web server on 0.0.0.0:5000
+2025-09-05 18:08:01,860 - __main__ - INFO - Dashboard available at http://0.0.0.0:5000
+2025-09-05 18:08:01,862 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.6.153:5000
+2025-09-05 18:08:01,862 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-05 18:08:06,614 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:06] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:08:06,616 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:06] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:08:06,618 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:06] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:08:06,618 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:06] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:08:07,816 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET / HTTP/1.1" 200 -
+2025-09-05 18:08:07,868 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /static/style.css HTTP/1.1" 200 -
+2025-09-05 18:08:07,884 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /static/dashboard.js HTTP/1.1" 200 -
+2025-09-05 18:08:07,980 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:08:07,981 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 18:08:07,983 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:08:07,983 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:08:07,991 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 18:08:07,994 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:07] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:08:08,046 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-05 18:08:14,483 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:14] "GET /settings HTTP/1.1" 200 -
+2025-09-05 18:08:14,596 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-05 18:08:14,661 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:14] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 18:08:14,663 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:14] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:08:20,393 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET / HTTP/1.1" 200 -
+2025-09-05 18:08:20,432 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-05 18:08:20,434 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "[36mGET /static/dashboard.js HTTP/1.1[0m" 304 -
+2025-09-05 18:08:20,459 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:08:20,468 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 18:08:20,469 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:08:20,471 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:08:20,471 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:08:20,496 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:20] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 18:08:22,109 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET / HTTP/1.1" 200 -
+2025-09-05 18:08:22,144 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /static/style.css HTTP/1.1" 200 -
+2025-09-05 18:08:22,147 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /static/dashboard.js HTTP/1.1" 200 -
+2025-09-05 18:08:22,237 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:08:22,258 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 18:08:22,259 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:08:22,261 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-05 18:08:22,263 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:08:22,264 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 18:08:22,264 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:22] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:08:53,194 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:53] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:08:53,195 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:08:53] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:09:23,125 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:09:23] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:09:23,127 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:09:23] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:09:23,129 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:09:23] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:09:23,130 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:09:23] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:09:53,169 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:09:53] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:09:53,170 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:09:53] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:10:14,003 - __main__ - INFO - Shutdown signal received
+2025-09-05 18:10:14,003 - sensor - INFO - Sensor resources cleaned up
+2025-09-05 18:10:14,200 - slack_notifier - ERROR - Slack API error: invalid_auth
+2025-09-05 18:10:14,200 - water_monitor - INFO - Water monitoring stopped
+2025-09-05 18:10:14,458 - __main__ - INFO - Starting Water Monitoring System
+2025-09-05 18:10:14,459 - water_monitor - INFO - Configuration loaded from config.json
+2025-09-05 18:10:14,459 - database - INFO - Database initialized at readings.db
+2025-09-05 18:10:14,459 - slack_notifier - INFO - Slack notifications enabled for channel: #water-alerts
+2025-09-05 18:10:14,462 - sensor - ERROR - Failed to initialize ADS1115: No I2C device at address: 0x48
+2025-09-05 18:10:14,462 - sensor - ERROR - Failed to initialize sensors: No I2C device at address: 0x48
+2025-09-05 18:10:14,462 - sensor - INFO - Sensor resources cleaned up
+2025-09-05 18:10:14,462 - water_monitor - ERROR - Failed to initialize sensors – continuing in degraded mode
+2025-09-05 18:10:14,567 - slack_notifier - ERROR - Slack API error: invalid_auth
+2025-09-05 18:10:14,567 - water_monitor - WARNING - Sensors not initialized – monitoring loop will not run
+2025-09-05 18:10:14,567 - __main__ - INFO - Starting web server on 0.0.0.0:5000
+2025-09-05 18:10:14,567 - __main__ - INFO - Dashboard available at http://0.0.0.0:5000
+2025-09-05 18:10:14,569 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.6.153:5000
+2025-09-05 18:10:14,569 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-05 18:10:19,385 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET / HTTP/1.1" 200 -
+2025-09-05 18:10:19,431 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /static/dashboard.js HTTP/1.1" 200 -
+2025-09-05 18:10:19,432 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /static/style.css HTTP/1.1" 200 -
+2025-09-05 18:10:19,567 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:10:19,593 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /api/settings HTTP/1.1" 200 -
+2025-09-05 18:10:19,594 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:10:19,598 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:10:19,599 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:10:19,611 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "GET /api/history/24 HTTP/1.1" 200 -
+2025-09-05 18:10:19,614 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-05 18:10:49,566 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:49] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:10:49,591 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:10:49] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:11:20,112 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:11:20] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:11:20,114 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:11:20] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:11:20,115 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:11:20] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:11:20,116 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:11:20] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:11:50,109 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:11:50] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:11:50,114 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:11:50] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:12:20,112 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:12:20] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:12:20,113 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:12:20] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:12:20,115 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:12:20] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:12:20,115 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:12:20] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:12:50,113 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:12:50] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:12:50,115 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:12:50] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:13:20,128 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:13:20] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:13:20,131 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:13:20] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:13:20,132 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:13:20] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:13:20,133 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:13:20] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:13:50,108 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:13:50] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:13:50,110 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:13:50] "GET /api/current HTTP/1.1" 200 -
+2025-09-05 18:14:20,114 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:14:20] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-05 18:14:20,117 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:14:20] "GET /api/statistics/24 HTTP/1.1" 200 -
+2025-09-05 18:14:26,106 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:14:26] "GET /api/status HTTP/1.1" 200 -
+2025-09-05 18:14:26,108 - werkzeug - INFO - 192.168.8.155 - - [05/Sep/2025 18:14:26] "GET /api/current HTTP/1.1" 200 -

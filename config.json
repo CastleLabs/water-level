@@ -5,6 +5,12 @@
   "consecutive_readings_for_alert": 3,
   "database_path": "readings.db",
   "i2c_address": 72,
+  "slack": {
+    "enabled": true,
+    "bot_token": "xoxb-your-bot-token-here",
+    "channel": "#water-alerts",
+    "mention_users": ["@channel"]
+  },
   "reference_sensor": {
     "calibration_empty": 50000,
     "calibration_full": 20000

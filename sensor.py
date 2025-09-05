@@ -380,6 +380,41 @@ class WaterLevelSensor:
         
         return raw
     
+    def tare(self) -> Dict:
+        """
+        Tare (zero out) the sensor at current level
+        Sets the current reading as the new empty/baseline level
+        
+        Returns:
+            Tare operation result
+        """
+        try:
+            # Take multiple samples for accuracy
+            raw = self.read_raw(samples=50)
+            voltage = self.read_voltage(samples=50)
+            
+            # Set current reading as new empty level
+            old_empty = self.calibration_empty
+            self.calibration_empty = raw
+            
+            logger.info(f"{self.name}: Tared - empty level changed from {old_empty} to {raw}")
+            
+            return {
+                'success': True,
+                'sensor': self.name,
+                'old_empty': old_empty,
+                'new_empty': raw,
+                'voltage': round(voltage, 3)
+            }
+            
+        except Exception as e:
+            logger.error(f"Error taring {self.name}: {e}")
+            return {
+                'success': False,
+                'sensor': self.name,
+                'error': str(e)
+            }
+    
     def get_calibration(self) -> Dict:
         """Get current calibration values"""
         return {
@@ -530,6 +565,27 @@ class DualSensorMonitor:
             'raw_value': raw_value,
             'success': True
         }
+    
+    def tare_sensor(self, sensor_name: str) -> Dict:
+        """
+        Tare specific sensor
+        
+        Args:
+            sensor_name: 'reference' or 'control'
+            
+        Returns:
+            Tare result
+        """
+        if not self.initialized:
+            return {'success': False, 'error': 'Sensors not initialized'}
+        
+        if sensor_name not in ['reference', 'control']:
+            return {'success': False, 'error': 'Invalid sensor name'}
+        
+        sensor = (self.reference_sensor if sensor_name == 'reference' 
+                 else self.control_sensor)
+        
+        return sensor.tare()
     
     def get_calibration_values(self) -> Dict:
         """Get all calibration values"""
