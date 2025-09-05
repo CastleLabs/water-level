@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Monitor Settings</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Water Level Monitor</h1>
+            <nav>
+                <a href="/">Dashboard</a>
+                <a href="/settings" class="active">Settings</a>
+            </nav>
+        </header>
+
+        <div class="card">
+            <h2>System Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label for="sample_interval">Sample Interval (seconds)</label>
+                    <input type="number" id="sample_interval" min="30" max="600" value="60">
+                    <small>How often to read sensors (30-600 seconds)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="leak_threshold">Leak Detection Threshold (%)</label>
+                    <input type="number" id="leak_threshold" min="1" max="20" step="0.5" value="5">
+                    <small>Difference between sensors that triggers leak detection (1-20%)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="consecutive_readings">Consecutive Readings for Alert</label>
+                    <input type="number" id="consecutive_readings" min="1" max="10" value="3">
+                    <small>Number of consecutive leak readings before alert (1-10)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="alert_cooldown">Alert Cooldown (seconds)</label>
+                    <input type="number" id="alert_cooldown" min="300" max="7200" value="3600">
+                    <small>Minimum time between alerts (300-7200 seconds)</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                    <button type="button" onclick="loadSettings()" class="btn">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Calibration Values</h2>
+            <div class="calibration-info">
+                <div class="calibration-values">
+                    <h3>Reference Sensor</h3>
+                    <p>Empty: <span id="ref-empty">--</span></p>
+                    <p>Full: <span id="ref-full">--</span></p>
+                </div>
+                <div class="calibration-values">
+                    <h3>Control Sensor</h3>
+                    <p>Empty: <span id="ctrl-empty">--</span></p>
+                    <p>Full: <span id="ctrl-full">--</span></p>
+                </div>
+            </div>
+            <p class="info-text">
+                To recalibrate sensors, use the calibration controls on the Dashboard page.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>System Status</h2>
+            <div id="system-status">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load settings on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+            loadStatus();
+        });
+
+        // Load current settings
+        function loadSettings() {
+            fetch('/api/settings')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('sample_interval').value = data.sample_interval || 60;
+                    document.getElementById('leak_threshold').value = data.leak_threshold || 5;
+                    document.getElementById('consecutive_readings').value = data.consecutive_readings_for_alert || 3;
+                    document.getElementById('alert_cooldown').value = data.alert_cooldown || 3600;
+                    
+                    // Update calibration values
+                    if (data.reference_sensor) {
+                        document.getElementById('ref-empty').textContent = data.reference_sensor.calibration_empty;
+                        document.getElementById('ref-full').textContent = data.reference_sensor.calibration_full;
+                    }
+                    if (data.control_sensor) {
+                        document.getElementById('ctrl-empty').textContent = data.control_sensor.calibration_empty;
+                        document.getElementById('ctrl-full').textContent = data.control_sensor.calibration_full;
+                    }
+                })
+                .catch(error => console.error('Error loading settings:', error));
+        }
+
+        // Load system status
+        function loadStatus() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    const statusDiv = document.getElementById('system-status');
+                    statusDiv.innerHTML = `
+                        <p><strong>Monitoring:</strong> ${data.running ? 'Running' : 'Stopped'}</p>
+                        <p><strong>Active Alerts:</strong> ${data.active_alerts || 0}</p>
+                        <p><strong>Database Readings:</strong> ${data.statistics?.reading_count || 0}</p>
+                        <p><strong>Latest Reading:</strong> ${data.latest_reading ? new Date(data.latest_reading.timestamp).toLocaleString() : 'None'}</p>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('system-status').innerHTML = '<p>Error loading status</p>';
+                });
+        }
+
+        // Handle form submission
+        document.getElementById('settings-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const settings = {
+                sample_interval: parseInt(document.getElementById('sample_interval').value),
+                leak_threshold: parseFloat(document.getElementById('leak_threshold').value),
+                consecutive_readings_for_alert: parseInt(document.getElementById('consecutive_readings').value),
+                alert_cooldown: parseInt(document.getElementById('alert_cooldown').value)
+            };
+            
+            fetch('/api/settings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(settings)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Settings saved successfully!');
+                    loadStatus();
+                } else {
+                    alert('Error saving settings: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                alert('Error saving settings: ' + error);
+            });
+        });
+
+        // Refresh status every 30 seconds
+        setInterval(loadStatus, 30000);
+    </script>
+</body>
+</html>

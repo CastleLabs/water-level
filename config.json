@@ -1,0 +1,16 @@
+{
+  "sample_interval": 60,
+  "leak_threshold": 5.0,
+  "alert_cooldown": 3600,
+  "consecutive_readings_for_alert": 3,
+  "database_path": "readings.db",
+  "i2c_address": 72,
+  "reference_sensor": {
+    "calibration_empty": 50000,
+    "calibration_full": 20000
+  },
+  "control_sensor": {
+    "calibration_empty": 50000,
+    "calibration_full": 20000
+  }
+}

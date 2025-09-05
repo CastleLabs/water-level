@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Monitor Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Water Level Monitor</h1>
+            <nav>
+                <a href="/" class="active">Dashboard</a>
+                <a href="/settings">Settings</a>
+            </nav>
+        </header>
+
+        <!-- Alert Section -->
+        <div id="alerts" class="alerts-container"></div>
+
+        <!-- Current Readings -->
+        <div class="card">
+            <h2>Current Readings</h2>
+            <div class="readings-grid">
+                <div class="reading-box">
+                    <h3>Reference Sensor</h3>
+                    <div class="reading-value">
+                        <span id="reference-level">--</span>%
+                    </div>
+                    <div class="reading-raw">Raw: <span id="reference-raw">--</span></div>
+                </div>
+                
+                <div class="reading-box">
+                    <h3>Control Sensor</h3>
+                    <div class="reading-value">
+                        <span id="control-level">--</span>%
+                    </div>
+                    <div class="reading-raw">Raw: <span id="control-raw">--</span></div>
+                </div>
+                
+                <div class="reading-box">
+                    <h3>Difference</h3>
+                    <div class="reading-value" id="difference-box">
+                        <span id="difference">--</span>%
+                    </div>
+                    <div class="reading-status">Status: <span id="status">--</span></div>
+                </div>
+            </div>
+            <div class="last-update">Last update: <span id="last-update">Never</span></div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="card">
+            <h2>24 Hour Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-label">Avg Reference</span>
+                    <span class="stat-value" id="avg-reference">--</span>%
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Avg Control</span>
+                    <span class="stat-value" id="avg-control">--</span>%
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Max Difference</span>
+                    <span class="stat-value" id="max-difference">--</span>%
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Total Readings</span>
+                    <span class="stat-value" id="reading-count">--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="card">
+            <div class="chart-header">
+                <h2>History</h2>
+                <div class="chart-controls">
+                    <button onclick="loadChart(24)" class="btn-small active" id="btn-24h">24 Hours</button>
+                    <button onclick="loadChart(168)" class="btn-small" id="btn-7d">7 Days</button>
+                    <button onclick="loadChart(720)" class="btn-small" id="btn-30d">30 Days</button>
+                </div>
+            </div>
+            <canvas id="chart"></canvas>
+        </div>
+
+        <!-- Calibration -->
+        <div class="card">
+            <h2>Sensor Calibration</h2>
+            <div class="calibration-controls">
+                <div class="calibration-group">
+                    <label>Sensor:</label>
+                    <select id="calibrate-sensor">
+                        <option value="reference">Reference</option>
+                        <option value="control">Control</option>
+                    </select>
+                </div>
+                <div class="calibration-group">
+                    <button onclick="calibrate(true)" class="btn">Calibrate Empty</button>
+                    <button onclick="calibrate(false)" class="btn">Calibrate Full</button>
+                </div>
+                <div id="calibration-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>
