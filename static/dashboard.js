@@ -62,7 +62,7 @@ function updateCurrent() {
             const diffBox = document.getElementById('difference-box');
             const status = document.getElementById('status');
 
-            // **FIXED**: Use the configurable threshold from settings, not a hardcoded value
+            // Use the configurable threshold from settings, not a hardcoded value
             if (Math.abs(difference) > systemSettings.leak_threshold) {
                 diffBox.classList.add('leak');
                 status.textContent = 'LEAK DETECTED';
@@ -283,5 +283,65 @@ function calibrate(isEmpty) {
     .catch(error => {
         resultDiv.innerHTML = `✗ Error: ${error}`;
         resultDiv.style.color = '#ff6b6b';
+    });
+}
+
+// Tare (zero out) sensor
+function tareSensor() {
+    const sensor = document.getElementById('calibrate-sensor').value;
+    const resultDiv = document.getElementById('calibration-result');
+
+    // Confirmation dialog
+    const confirmed = confirm(
+        `Are you sure you want to tare the ${sensor} sensor?\n\n` +
+        `This will set the current water level as the new 0% baseline. ` +
+        `This action cannot be undone without recalibrating.`
+    );
+    
+    if (!confirmed) {
+        return;
+    }
+
+    resultDiv.innerHTML = 'Taring sensor...';
+    resultDiv.style.color = '#82aaff';
+
+    fetch('/api/tare', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            sensor: sensor
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            resultDiv.innerHTML = `✓ ${sensor} sensor tared successfully!<br>` +
+                                 `New empty level: ${data.new_empty} (was ${data.old_empty})<br>` +
+                                 `Current voltage: ${data.voltage}V`;
+            resultDiv.style.color = '#48c774';
+            
+            // Refresh current readings to show the change
+            setTimeout(() => {
+                updateCurrent();
+            }, 1000);
+        } else {
+            resultDiv.innerHTML = `✗ Tare failed: ${data.error || 'Unknown error'}`;
+            resultDiv.style.color = '#ff6b6b';
+        }
+
+        // Clear message after 8 seconds
+        setTimeout(() => {
+            resultDiv.innerHTML = '';
+        }, 8000);
+    })
+    .catch(error => {
+        resultDiv.innerHTML = `✗ Error: ${error}`;
+        resultDiv.style.color = '#ff6b6b';
+        
+        setTimeout(() => {
+            resultDiv.innerHTML = '';
+        }, 8000);
     });
 }

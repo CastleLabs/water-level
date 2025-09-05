@@ -167,6 +167,160 @@ nav a.active {
     border-color: #3f51b5;
 }
 
+/* Calibration section styling */
+.calibration-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border-left: 3px solid #3f51b5;
+}
+
+.calibration-section h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.calibration-section small {
+    color: #bbb;
+    font-style: italic;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Warning button for tare operation */
+.btn-warning {
+    background: #ff9800 !important;
+    color: #000 !important;
+    font-weight: bold;
+}
+
+.btn-warning:hover {
+    background: #e68900 !important;
+    transform: translateY(-1px);
+}
+
+/* Enhanced calibration controls layout */
+.calibration-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calibration-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.calibration-group label {
+    font-weight: bold;
+    min-width: 60px;
+}
+
+.calibration-group select {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* Result message styling */
+#calibration-result {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #1a1a1a;
+    border-left: 3px solid #82aaff;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Form styling for settings page */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #bbb;
+    font-size: 12px;
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Chart controls */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* Status indicators */
+.info-text {
+    color: #bbb;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+/* Leak detection styling */
+.leak {
+    background: #b00020 !important;
+    color: #fff !important;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .readings-grid {
@@ -177,5 +331,25 @@ nav a.active {
     }
     .calibration-info {
         grid-template-columns: 1fr;
+    }
+    .calibration-section {
+        margin: 15px 0;
+        padding: 10px;
+    }
+    .calibration-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .calibration-group label {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+    .chart-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    .form-actions {
+        flex-direction: column;
     }
 }
