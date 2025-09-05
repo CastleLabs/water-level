@@ -16,6 +16,11 @@
             </nav>
         </header>
 
+        <!-- Warning Banner -->
+        <div id="sensor-warning" class="alert warning" style="display:none;">
+            ⚠️ No sensors detected – running in degraded mode.
+        </div>
+
         <div class="card">
             <h2>System Settings</h2>
             <form id="settings-form">
@@ -78,13 +83,11 @@
     </div>
 
     <script>
-        // Load settings on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadSettings();
             loadStatus();
         });
 
-        // Load current settings
         function loadSettings() {
             fetch('/api/settings')
                 .then(response => response.json())
@@ -94,7 +97,6 @@
                     document.getElementById('consecutive_readings').value = data.consecutive_readings_for_alert || 3;
                     document.getElementById('alert_cooldown').value = data.alert_cooldown || 3600;
                     
-                    // Update calibration values
                     if (data.reference_sensor) {
                         document.getElementById('ref-empty').textContent = data.reference_sensor.calibration_empty;
                         document.getElementById('ref-full').textContent = data.reference_sensor.calibration_full;
@@ -107,7 +109,6 @@
                 .catch(error => console.error('Error loading settings:', error));
         }
 
-        // Load system status
         function loadStatus() {
             fetch('/api/status')
                 .then(response => response.json())
@@ -119,16 +120,22 @@
                         <p><strong>Database Readings:</strong> ${data.statistics?.reading_count || 0}</p>
                         <p><strong>Latest Reading:</strong> ${data.latest_reading ? new Date(data.latest_reading.timestamp).toLocaleString() : 'None'}</p>
                     `;
+
+                    // Toggle sensor warning
+                    const warningBanner = document.getElementById('sensor-warning');
+                    if (data.sensors_initialized === false) {
+                        warningBanner.style.display = 'block';
+                    } else {
+                        warningBanner.style.display = 'none';
+                    }
                 })
-                .catch(error => {
+                .catch(() => {
                     document.getElementById('system-status').innerHTML = '<p>Error loading status</p>';
                 });
         }
 
-        // Handle form submission
         document.getElementById('settings-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const settings = {
                 sample_interval: parseInt(document.getElementById('sample_interval').value),
                 leak_threshold: parseFloat(document.getElementById('leak_threshold').value),
@@ -138,9 +145,7 @@
             
             fetch('/api/settings', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(settings)
             })
             .then(response => response.json())
@@ -149,16 +154,3 @@
                     alert('Settings saved successfully!');
                     loadStatus();
                 } else {
-                    alert('Error saving settings: ' + (data.error || 'Unknown error'));
-                }
-            })
-            .catch(error => {
-                alert('Error saving settings: ' + error);
-            });
-        });
-
-        // Refresh status every 30 seconds
-        setInterval(loadStatus, 30000);
-    </script>
-</body>
-</html>

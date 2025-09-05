@@ -17,6 +17,11 @@
             </nav>
         </header>
 
+        <!-- Warning Banner -->
+        <div id="sensor-warning" class="alert warning" style="display:none;">
+            ⚠️ No sensors detected – running in degraded mode.
+        </div>
+
         <!-- Alert Section -->
         <div id="alerts" class="alerts-container"></div>
 
@@ -108,5 +113,25 @@
     </div>
 
     <script src="/static/dashboard.js"></script>
+    <script>
+        // Add check for sensor status
+        function updateSensorWarning() {
+            fetch('/api/status')
+                .then(r => r.json())
+                .then(status => {
+                    const banner = document.getElementById('sensor-warning');
+                    if (status.sensors_initialized === false) {
+                        banner.style.display = 'block';
+                    } else {
+                        banner.style.display = 'none';
+                    }
+                })
+                .catch(() => {});
+        }
+
+        // Refresh warning every 30s
+        setInterval(updateSensorWarning, 30000);
+        updateSensorWarning();
+    </script>
 </body>
 </html>

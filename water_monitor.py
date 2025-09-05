@@ -34,10 +34,10 @@ class WaterMonitor:
         self.last_alert_time = None
         self.consecutive_leak_readings = 0
         
-        # Initialize sensors
+        # Initialize sensors (gracefully handle failure)
         if not self.sensors.initialize(self.config):
-            logger.error("Failed to initialize sensors")
-            raise RuntimeError("Sensor initialization failed")
+            logger.error("Failed to initialize sensors – continuing in degraded mode")
+            # Do not raise; allow system to start with sensors disabled
     
     def load_config(self) -> Dict:
         """Load configuration from file"""
@@ -86,6 +86,10 @@ class WaterMonitor:
     
     def start(self):
         """Start monitoring"""
+        if not self.sensors.initialized:
+            logger.warning("Sensors not initialized – monitoring loop will not run")
+            return
+        
         if not self.running:
             self.running = True
             self.monitor_thread = threading.Thread(target=self._monitor_loop)
@@ -224,6 +228,7 @@ class WaterMonitor:
         
         return {
             'running': self.running,
+            'sensors_initialized': self.sensors.initialized,
             'latest_reading': latest,
             'statistics': stats,
             'active_alerts': len(alerts),
