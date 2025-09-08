@@ -71,23 +71,40 @@ Repeat the same voltage divider circuit for the second sensor:
 - **560Ω resistor:** Between 3.3V and second junction
 - **eTape sensor:** One terminal to junction, other to ground
 
-## Step 5: Complete Wiring Diagram
+## Step 5: Complete Wiring Diagram (Terminal Block Method)
 
 ```
-Raspberry Pi 5              ADS1115                    eTape Sensors
+Raspberry Pi 5              ADS1115              Terminal Blocks & eTape Sensors
                                                       
 Pin 1 (3.3V) ────────────── VDD                    
 Pin 3 (SDA)  ────────────── SDA                    
 Pin 5 (SCL)  ────────────── SCL                    
 Pin 6 (GND)  ────────────── GND                    
                             
-                3.3V ──┬── 560Ω ──┬── Reference eTape ── GND
-                       │          │    Sensor
-                       │          └── A0
-                       │          
-                       └── 560Ω ──┬── Control eTape ── GND
-                                  │    Sensor  
-                                  └── A1
+              3.3V ─── [Terminal Block] ─┬─ 560Ω ─┬─ Reference eTape ─┐
+                                         │        │                   │
+              GND  ─── [Terminal Block] ─┼────────┼───────────────────┼─ GND
+                                         │        └─ A0               │
+                                         │                            │
+                                         └─ 560Ω ─┬─ Control eTape ───┘
+                                                   │                    
+                                                   └─ A1               
+```
+
+### Alternative: Direct Solder Connections
+```
+Raspberry Pi 5              ADS1115              Direct Connections
+                                                      
+Pin 1 (3.3V) ────────────── VDD                    
+Pin 3 (SDA)  ────────────── SDA                    
+Pin 5 (SCL)  ────────────── SCL                    
+Pin 6 (GND)  ────────────── GND                    
+                            
+              3.3V ─ Wire Nuts ─┬─ 560Ω ─┬─ Reference eTape ── GND
+                                │        └─ A0
+                                │        
+                                └─ 560Ω ─┬─ Control eTape ── GND
+                                         └─ A1
 ```
 
 ## Step 6: Physical Sensor Installation
@@ -123,25 +140,35 @@ Pin 6 (GND)  ────────────── GND
 
 ## Step 8: Software Configuration
 
-### Verify sensor channels in config.json:
+### Update config.json for PN-12110215TC-5 sensors:
 ```json
 {
   "reference_sensor": {
-    "calibration_empty": 50000,
-    "calibration_full": 20000
+    "calibration_empty": 51500,
+    "calibration_full": 24000
   },
   "control_sensor": {
-    "calibration_empty": 50000, 
-    "calibration_full": 20000
+    "calibration_empty": 51500, 
+    "calibration_full": 24000
   }
 }
 ```
 
-### Initial calibration:
+**Why these values for 5-inch sensors:**
+- **Empty sensor** (~1150Ω + 1.8kΩ voltage divider): ~1.29V → ~51,500 ADC reading
+- **Full sensor** (~400Ω + 1.8kΩ voltage divider): ~0.6V → ~24,000 ADC reading
+- **16-bit ADC**: 0-65535 range (higher numbers = higher voltage)
+
+### Initial calibration process:
 1. Start the system: `sudo systemctl start water-monitor`
 2. Access web dashboard: `http://<pi-ip>:5000`
-3. With sensors in empty containers: Click "Calibrate Empty"
-4. Fill containers to known level: Click "Calibrate Full"
+3. **Empty calibration**: With sensors in air/empty containers, click "Calibrate Empty"
+4. **Full calibration**: Submerge sensors to known level, click "Calibrate Full"
+
+### Expected voltage behavior:
+- **Empty sensor** (~1150Ω): ~1.3V reading
+- **Full sensor** (~400Ω): ~0.6V reading  
+- **Voltage range**: Approximately 0.6V to 1.3V depending on water level
 
 ## Troubleshooting Common Issues
 
