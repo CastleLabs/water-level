@@ -115,10 +115,10 @@ Pin 6 (GND)  ────────────── GND
 - Ensure sensor extends into water area you want to monitor
 - Route wire to electronics enclosure
 
-### Control Sensor (Sealed Container):
-- Install in a separate, sealed reference container
+### Control Sensor :
+- Install in a separate, reference container
 - This container should have the same water source initially
-- Keep sealed to detect when main container loses water
+- Keep to detect when main container loses water
 - Route wire to electronics enclosure
 
 ## Step 7: Testing and Verification
@@ -204,6 +204,6 @@ Pin 6 (GND)  ────────────── GND
 
 ## Final Notes
 
-This wiring setup will give you a reliable dual-sensor water monitoring system capable of detecting leaks by comparing water levels between your main container and a sealed reference container. The system works by detecting differences between the two sensors - if water is lost from the main container but not the sealed reference, it indicates a leak.
+This wiring setup will give you a reliable dual-sensor water monitoring system capable of detecting leaks by comparing water levels between your main container and a reference container. The system works by detecting differences between the two sensors - if water is lost from the main container but not the reference, it indicates a leak.
 
 Take your time with the wiring and double-check all connections before powering on. A systematic approach will save time troubleshooting later.
